@@ -12,6 +12,8 @@ public class Klass {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     @CreatedDate
     private ZonedDateTime create_date = ZonedDateTime.now();
 
@@ -19,8 +21,9 @@ public class Klass {
     @JoinColumn(name = "leader_id")
     private Leader leader;
 
-    public Klass(Long id, Leader leader){
+    public Klass(Long id, String name, Leader leader){
         this.id = id;
+        this.name = name;
         this.leader = leader;
     }
 
@@ -49,5 +52,14 @@ public class Klass {
     public void setLeader(Leader leader) {
         this.leader = leader;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
 }
