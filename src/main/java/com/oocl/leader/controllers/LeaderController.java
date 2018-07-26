@@ -3,10 +3,13 @@ package com.oocl.leader.controllers;
 
 import com.oocl.leader.controllers.DTO.LeaderDTO;
 import com.oocl.leader.entities.Leader;
+import com.oocl.leader.exceptions.BadRequestException;
 import com.oocl.leader.exceptions.ResourceNotFoundException;
 import com.oocl.leader.repositories.LeaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -43,5 +46,14 @@ public class LeaderController {
     public LeaderDTO getLeaderById(@PathVariable Long leaderID){
         Leader leader = leaderRepository.findById(leaderID).orElseThrow(()->new ResourceNotFoundException("leader not found"));
         return new LeaderDTO(leader);
+    }
+
+    @Transactional
+    @PutMapping(path = "/{leaderID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateCompanyById(@PathVariable Long leaderID, @RequestBody Leader leader){
+        leaderRepository.findById(leaderID).orElseThrow(()-> new BadRequestException("bad request"));
+        leader.setId(leaderID);
+        leaderRepository.save(leader);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
