@@ -61,5 +61,11 @@ public class KlassController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    
+    @Transactional
+    @DeleteMapping(path = "/{klassID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public KlassDTO deleteKlassById(@PathVariable Long klassID){
+        Klass klass = klassRepository.findById(klassID).orElseThrow(()->new ResourceNotFoundException("klass not found"));
+        klassRepository.delete(klass);
+        return new KlassDTO(klass);
+    }
 }
