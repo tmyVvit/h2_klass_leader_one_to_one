@@ -1,6 +1,7 @@
 package com.oocl.leader.controllers;
 
 
+import com.oocl.leader.controllers.DTO.KlassDTO;
 import com.oocl.leader.controllers.DTO.LeaderDTO;
 import com.oocl.leader.entities.Klass;
 import com.oocl.leader.entities.Leader;
@@ -68,4 +69,5 @@ public class LeaderController {
         if(klass!=null) klass.setLeader(null);
         return leaderDTO;
     }
+
 }

@@ -7,6 +7,8 @@ import com.oocl.leader.entities.Leader;
 import com.oocl.leader.exceptions.BadRequestException;
 import com.oocl.leader.exceptions.ResourceNotFoundException;
 import com.oocl.leader.repositories.KlassRepository;
+import com.oocl.leader.repositories.LeaderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,10 @@ public class KlassController {
 
     private KlassRepository klassRepository;
 
+    @Autowired
+    private LeaderRepository leaderRepository;
+
+    @Autowired
     public KlassController(KlassRepository klassRepository){
         this.klassRepository = klassRepository;
     }
@@ -66,6 +72,19 @@ public class KlassController {
     public KlassDTO deleteKlassById(@PathVariable Long klassID){
         Klass klass = klassRepository.findById(klassID).orElseThrow(()->new ResourceNotFoundException("klass not found"));
         klassRepository.delete(klass);
+        return new KlassDTO(klass);
+    }
+
+    @Transactional
+    @PatchMapping(path = "/{klassID}/leaders", produces = MediaType.APPLICATION_JSON_VALUE)
+    public KlassDTO setKlassLeader(@PathVariable Long klassID, @RequestBody Leader leader){
+        Klass klass = klassRepository.findById(klassID).orElseThrow(()-> new BadRequestException("bad request"));
+        Leader leaderOld = klass.getLeader();
+        if(leaderOld!=null) leaderOld.setKlass(null);
+        Leader leader1 = leaderRepository.findById(leader.getId()).orElseThrow(()->new ResourceNotFoundException("leader not found"));
+        klass.setLeader(leader1);
+        leader1.setKlass(klass);
+
         return new KlassDTO(klass);
     }
 }
