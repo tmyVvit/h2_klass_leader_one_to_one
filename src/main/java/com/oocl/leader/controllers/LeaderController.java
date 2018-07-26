@@ -51,7 +51,7 @@ public class LeaderController {
 
     @Transactional
     @PutMapping(path = "/{leaderID}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity updateCompanyById(@PathVariable Long leaderID, @RequestBody Leader leader){
+    public ResponseEntity updateLeaderById(@PathVariable Long leaderID, @RequestBody Leader leader){
         leaderRepository.findById(leaderID).orElseThrow(()-> new BadRequestException("bad request"));
         leader.setId(leaderID);
         leaderRepository.save(leader);
