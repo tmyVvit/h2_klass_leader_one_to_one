@@ -2,6 +2,7 @@ package com.oocl.leader.controllers;
 
 
 import com.oocl.leader.controllers.DTO.LeaderDTO;
+import com.oocl.leader.entities.Klass;
 import com.oocl.leader.entities.Leader;
 import com.oocl.leader.exceptions.BadRequestException;
 import com.oocl.leader.exceptions.ResourceNotFoundException;
@@ -55,5 +56,16 @@ public class LeaderController {
         leader.setId(leaderID);
         leaderRepository.save(leader);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @Transactional
+    @DeleteMapping(path = "/{leaderID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public LeaderDTO deleteLeaderById(@PathVariable Long leaderID){
+        Leader leader = leaderRepository.findById(leaderID).orElseThrow(()-> new BadRequestException("bad request"));
+        LeaderDTO leaderDTO = new LeaderDTO(leader);
+        Klass klass = leader.getKlass();
+        leaderRepository.delete(leader);
+        if(klass!=null) klass.setLeader(null);
+        return leaderDTO;
     }
 }
