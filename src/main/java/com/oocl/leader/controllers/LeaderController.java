@@ -6,12 +6,11 @@ import com.oocl.leader.entities.Leader;
 import com.oocl.leader.repositories.LeaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/leaders")
@@ -28,5 +27,13 @@ public class LeaderController {
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public LeaderDTO saveLeader(@RequestBody Leader leader){
         return new LeaderDTO(leaderRepository.save(leader));
+    }
+
+    @Transactional
+    @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<LeaderDTO> getAllLeaders(){
+        List<LeaderDTO> leaders = new ArrayList<>();
+        leaderRepository.findAll().stream().forEach(leader -> leaders.add(new LeaderDTO(leader)));
+        return leaders;
     }
 }
