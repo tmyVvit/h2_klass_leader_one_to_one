@@ -1,0 +1,372 @@
+{
+	"info": {
+		"_postman_id": "030f1319-054b-4eff-9064-b5bad8eb5a46",
+		"name": "LeaderKlass",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "4e0b2b7f-f921-421e-b12f-c859f24827b1",
+			"name": "saveLeader",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"111111\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/leaders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"leaders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "f00d131f-41ca-4d6c-bfbc-4bad60a28e76",
+			"name": "saveLeader Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"22222\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/leaders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"leaders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "c0d01368-452b-4ad3-af26-1ae65f82da6c",
+			"name": "getAllLeaders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/leaders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"leaders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "ab859281-b884-40a6-b322-a2042ee49a11",
+			"name": "getLeaderById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/leaders/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"leaders",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "0a1f9f48-616a-4b16-a545-55d7f0a5f641",
+			"name": "updateLeader",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/leaders/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"leaders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "b3cf5591-afec-4213-9cc4-992e8f32e8dc",
+			"name": "deleteLeaderById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/leaders/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"leaders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "6d55d339-9ea4-4705-8524-11cd3af488d3",
+			"name": "saveKlass",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"1\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/klasses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"klasses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "e3ae1629-1bc5-422d-bc5e-495e5a5285eb",
+			"name": "saveKlass Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"1\",\n\t\"leader\":{\n\t\t\"name\":\"lllll\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/klasses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"klasses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "a729c3ad-3488-47d1-a524-7bb1a1636e3e",
+			"name": "getAllKlasses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/klasses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"klasses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "7542865f-92ae-41d8-8da2-d48239686eb9",
+			"name": "getKlassById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/klasses/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"klasses",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "e2c5d971-602e-43fe-bedd-58117ea39ad6",
+			"name": "updateKlassById",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"update1\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/klasses/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"klasses",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "f4834205-af95-4bfb-a89a-704edc1c1b2a",
+			"name": "deleteKlassById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/klasses/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"klasses",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "3980b378-4a69-4edc-8b98-2a5bce1bc343",
+			"name": "changeKlassLeader",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/klasses/2/leaders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"klasses",
+						"2",
+						"leaders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
