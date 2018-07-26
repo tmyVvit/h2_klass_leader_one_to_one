@@ -3,6 +3,7 @@ package com.oocl.leader.controllers;
 
 import com.oocl.leader.controllers.DTO.LeaderDTO;
 import com.oocl.leader.entities.Leader;
+import com.oocl.leader.exceptions.ResourceNotFoundException;
 import com.oocl.leader.repositories.LeaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -35,5 +36,12 @@ public class LeaderController {
         List<LeaderDTO> leaders = new ArrayList<>();
         leaderRepository.findAll().stream().forEach(leader -> leaders.add(new LeaderDTO(leader)));
         return leaders;
+    }
+
+    @Transactional
+    @GetMapping(path = "/{leaderID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public LeaderDTO getLeaderById(@PathVariable Long leaderID){
+        Leader leader = leaderRepository.findById(leaderID).orElseThrow(()->new ResourceNotFoundException("leader not found"));
+        return new LeaderDTO(leader);
     }
 }
