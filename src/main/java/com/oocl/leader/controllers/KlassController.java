@@ -30,6 +30,9 @@ public class KlassController {
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public KlassDTO saveKlass(@RequestBody Klass klass){
         klassRepository.save(klass);
+        if(klass.getLeader()!=null){
+            klass.getLeader().setKlass(klass);
+        }
         return new KlassDTO(klass);
     }
 
@@ -57,4 +60,6 @@ public class KlassController {
         klassRepository.save(klass);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+    
 }
